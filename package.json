@@ -1,0 +1,38 @@
+{
+  "name": "mac-oui-lookup",
+  "version": "1.0.0",
+  "description": "A package for performing vendor lookups based on MAC address OUIs. Requires an internet connection and API access key. Uses IEEE OUI data in JSON format.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "create-vendor-data": "node src/utils.js",
+    "update:oui24": "curl -sSL http://standards-oui.ieee.org/oui/oui.csv -o data/oui24.csv",
+    "update:oui28": "curl -sSL http://standards-oui.ieee.org/oui28/mam.csv -o data/oui28.csv",
+    "update:oui36": "curl -sSL http://standards-oui.ieee.org/oui36/oui36.csv -o data/oui36.csv",
+    "update-csv": "npm-run-all --parallel update:oui*"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parthiganesh/mac-oui-lookup.git"
+  },
+  "keywords": [
+    "mac",
+    "address",
+    "OUI",
+    "vendor",
+    "lookup",
+    "IEEE"
+  ],
+  "author": "Parthiban parthinow@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/parthiganesh/mac-oui-lookup/issues"
+  },
+  "homepage": "https://github.com/parthiganesh/mac-oui-lookup#readme",
+  "devDependencies": {
+    "csv-parser": "^3.0.0",
+    "jest": "^29.5.0",
+    "npm-run-all": "^4.1.5"
+  }
+}
