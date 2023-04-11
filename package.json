@@ -1,6 +1,6 @@
 {
   "name": "mac-oui-lookup",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A package for performing vendor lookups based on MAC address OUIs. Requires an internet connection and API access key. Uses IEEE OUI data in JSON format.",
   "main": "src/index.js",
   "readme": "README.md",
@@ -11,7 +11,6 @@
     "update:oui28": "curl -sSL http://standards-oui.ieee.org/oui28/mam.csv -o data/oui28.csv",
     "update:oui36": "curl -sSL http://standards-oui.ieee.org/oui36/oui36.csv -o data/oui36.csv",
     "update-csv": "npm-run-all --parallel update:oui*"
-
   },
   "repository": {
     "type": "git",
