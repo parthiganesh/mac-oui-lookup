@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "A package for performing vendor lookups based on MAC address OUIs. Requires an internet connection and API access key. Uses IEEE OUI data in JSON format.",
   "main": "src/index.js",
+  "readme": "README.md",
   "scripts": {
     "test": "jest",
     "create-vendor-data": "node src/utils.js",
