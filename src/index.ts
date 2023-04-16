@@ -1,6 +1,6 @@
-const vendorData = require('../vendor-data.json');
+import vendorData from './vendor-data.json';
 
-function getVendor(macAddress, defaultVendor=null) {
+function getVendor(macAddress: string, defaultVendor: string | null = null): string | null {
 
   // Extract the first 6 characters of the MAC address
   const oui24 = macAddress.toUpperCase().replace(/[:-]/g, '').substring(0, 6);
@@ -10,6 +10,5 @@ function getVendor(macAddress, defaultVendor=null) {
   return vendorData[oui36] || vendorData[oui28] || vendorData[oui24] || defaultVendor;
 }
 
-module.exports = {
-  getVendor
-};
+export default getVendor;
+export { getVendor };

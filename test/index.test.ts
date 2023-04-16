@@ -1,6 +1,6 @@
-const { getVendor } = require("../dist/main");
+import getVendor from "../src/index";
 
-describe("built lookupVendor", () => {
+describe("getVendor", () => {
   test("should return the correct vendor name for a MAC address", () => {
     expect(getVendor("00-50-56-bb-fc-8e")).toBe("VMware, Inc.");
   });
