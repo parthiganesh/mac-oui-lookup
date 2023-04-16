@@ -1,26 +1,49 @@
-const csv = require('csv-parser');
-const path = require('path');
+const request = require('request');
+const csvParser = require('csv-parser');
 const fs = require('fs');
 
+const urls = [
+  'http://standards-oui.ieee.org/oui/oui.csv',
+  'http://standards-oui.ieee.org/oui28/mam.csv',
+  'http://standards-oui.ieee.org/oui36/oui36.csv'
+];
+const outputFile = '/Users/parthibang/Desktop/mac-oui-lookup/vendor-data.json';
+
 const vendorData = {};
-const dataDir = 'data';
-const csvFiles = ["oui24.csv", "oui28.csv", "oui36.csv"];
+let oui_count = 0;
 
-csvFiles.forEach((filename) => {
+function processCsvFile(url) {
+  return new Promise((resolve, reject) => {
 
-  file=path.join(dataDir, filename)
-  console.log(file)
-  fs.createReadStream(file)
-    .pipe(csv())
-    .on('data', (data) => {
-      vendorData[data.Assignment] = data['Organization Name']
-    })
-    .on('end', () => {
-      try {
-        fs.writeFileSync('vendor-data.json', JSON.stringify(vendorData));
-      }
-      catch (e) {
-        console.log(e)
-      }
-    });
-});
+    rejectWithError = (e) => reject(e);
+    console.log(`Downloading ${url}`);
+    
+    request.get(url)
+      .on('error', rejectWithError)
+
+      .pipe(csvParser())
+      .on('error', rejectWithError)
+
+      .on('data', (data) => {
+        const oui = data['Assignment'];
+        const vendorName = data['Organization Name'];
+        vendorData[oui] = vendorName;
+        process.stdout.write(`${oui_count++} \r`);
+      })
+
+      .on('end', () => {
+        console.log(`Processed ${url}`);
+        resolve();
+      });
+  });
+}
+
+Promise.all(urls.map(processCsvFile))
+  .then((result) => {
+    console.log(`Writing ${oui_count} OUIs`);
+    fs.writeFileSync(outputFile, JSON.stringify(vendorData, null, 2));
+    console.log(`${outputFile} created successfully`);
+  })
+  .catch((err) => {
+    console.error('Error:', err);
+  });

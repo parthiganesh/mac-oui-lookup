@@ -1,1 +1,4 @@
-data/*.csv
+*
+!dist/
+dist/*
+!dist/main.js
