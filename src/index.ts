@@ -11,3 +11,4 @@ function getVendor(macAddress: string, defaultVendor: string | null = null): str
 }
 
 export default getVendor;
+export { getVendor };
