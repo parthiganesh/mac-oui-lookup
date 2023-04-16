@@ -1,4 +1,2 @@
 *
-!dist/
-dist/*
-!dist/bundle.js
+!dist/*
