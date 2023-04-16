@@ -1,6 +1,6 @@
 {
   "name": "mac-oui-lookup",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A module that allows you to retrieve the vendor name of a MAC address.",
   "main": "dist/bundle.js",
   "types": "dist/index.d.ts",
