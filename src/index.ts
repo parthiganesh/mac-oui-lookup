@@ -1,4 +1,4 @@
-import vendorData from '../vendor-data.json';
+import vendorData from './vendor-data.json';
 
 function getVendor(macAddress: string, defaultVendor: string | null = null): string | null {
 

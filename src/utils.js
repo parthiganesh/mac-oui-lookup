@@ -7,7 +7,7 @@ const urls = [
   'http://standards-oui.ieee.org/oui28/mam.csv',
   'http://standards-oui.ieee.org/oui36/oui36.csv'
 ];
-const outputFile = '/Users/parthibang/Desktop/mac-oui-lookup/vendor-data.json';
+const outputFile = './src/vendor-data.json';
 
 const vendorData = {};
 let oui_count = 0;

@@ -3,6 +3,7 @@
   "version": "1.0.6",
   "description": "A module that allows you to retrieve the vendor name of a MAC address.",
   "main": "dist/bundle.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
     "update-db": "node src/utils.js",
@@ -28,6 +29,7 @@
   },
   "homepage": "https://github.com/parthiganesh/mac-oui-lookup#readme",
   "devDependencies": {
+    "@types/jest": "^29.5.0",
     "csv-parser": "^3.0.0",
     "jest": "^29.5.0",
     "request": "^2.88.2",
