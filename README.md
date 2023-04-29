@@ -1,5 +1,5 @@
 # MAC OUI Lookup
-mac-oui-lookup is a Node.js module that allows you to retrieve the vendor name of a MAC address with no internet connection required. The module comes with an up-to-date database of 43790+ OUIs directly imported from IEEE registries.
+mac-oui-lookup is a Node.js module that allows you to retrieve the vendor name of a MAC address with no internet connection required. The module comes with an up-to-date database of around 50K OUIs directly imported from IEEE registries.
 
 This module has no dependencies and can be easily integrated into your Node.js projects.
 
@@ -17,12 +17,20 @@ npm install mac-oui-lookup --save
 ```javascript
 const { getVendor } = require('mac-oui-lookup');
 
-console.log(getVendor('00-50-56-BB-FC-8E')); // Output: VMware, Inc.
+const vendor = getVendor('00-50-56-BB-FC-8E');
+console.log(vendor); // Output: VMware, Inc.
+```
+
+```typescript
+import getVendor from 'mac-oui-lookup';
+
+const vendor = getVendor('00-50-56-BB-FC-8E');
+console.log(vendor); // Output: VMware, Inc.
 ```
 
 ## Features
 - Fast and efficient vendor name lookup
-- No internet connection required
+- Works offline. No internet connection required
 - Up-to-date database directly imported from IEEE registries
 - Lightweight with no dependencies
 

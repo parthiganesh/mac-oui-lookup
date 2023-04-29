@@ -41,7 +41,7 @@ function processCsvFile(url) {
 Promise.all(urls.map(processCsvFile))
   .then((result) => {
     console.log(`Writing ${oui_count} OUIs`);
-    fs.writeFileSync(outputFile, JSON.stringify(vendorData, null, 2));
+    fs.writeFileSync(outputFile, JSON.stringify(vendorData, Object.keys(vendorData).sort(), 2));
     console.log(`${outputFile} created successfully`);
   })
   .catch((err) => {
